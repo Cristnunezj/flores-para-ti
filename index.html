@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Feliz día 🌸</title>
+
+<style>
+body {
+  margin: 0;
+  background: linear-gradient(to top, #ffdde1, #ee9ca7);
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* MENSAJE PRINCIPAL */
+.mensaje {
+  position: relative;
+  font-size: 4em;
+  color: white;
+  text-align: center;
+  font-weight: bold;
+  text-shadow:
+    0 0 10px #fff,
+    0 0 20px #ff4fa3,
+    0 0 30px #ff4fa3;
+  margin-bottom: 60px;
+  z-index: 10;
+  animation: aparecer 2s ease-in-out forwards;
+  opacity: 0;
+}
+
+@keyframes aparecer {
+  to { opacity: 1; }
+}
+
+/* CONTENEDOR FLORES */
+.jardin {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  gap: 40px;
+  justify-content: center;
+  align-items: center;
+}
+
+/* FLOR */
+.flor {
+  position: relative;
+  width: 120px;
+  height: 120px;
+  animation: flotar 4s ease-in-out infinite;
+}
+
+.petalo {
+  position: absolute;
+  width: 60px;
+  height: 90px;
+  background: radial-gradient(circle at 30% 30%, #ff9ecb, #ff4fa3);
+  border-radius: 50%;
+  transform-origin: bottom center;
+}
+
+.petalo:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
+.petalo:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
+.petalo:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
+.petalo:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
+.petalo:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
+.petalo:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
+.petalo:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
+.petalo:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
+
+.centro {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background: radial-gradient(circle, #ffe066, #ffcc00);
+  border-radius: 50%;
+  top: 35px;
+  left: 35px;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+</style>
+</head>
+
+<body>
+
+<div class="mensaje">Flores como nadie te las han dado, te quiero mucho 💖</div>
+
+<div class="jardin">
+</div>
+
+<script>
+const jardin = document.querySelector(".jardin");
+
+function crearFlor() {
+  const flor = document.createElement("div");
+  flor.className = "flor";
+
+  for (let i = 0; i < 8; i++) {
+    const petalo = document.createElement("div");
+    petalo.className = "petalo";
+    flor.appendChild(petalo);
+  }
+
+  const centro = document.createElement("div");
+  centro.className = "centro";
+  flor.appendChild(centro);
+
+  return flor;
+}
+
+for (let i = 0; i < 10; i++) {
+  jardin.appendChild(crearFlor());
+}
+</script>
+
+</body>
+</html>
