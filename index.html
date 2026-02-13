@@ -2,35 +2,29 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Feliz día 🌸</title>
+<title>San Valentín ❤️</title>
 
 <style>
 body {
   margin: 0;
-  background: linear-gradient(to top, #ffdde1, #ee9ca7);
-  font-family: 'Arial', sans-serif;
+  overflow: hidden;
+  background: radial-gradient(circle at center, #ff4e8a, #8b0000);
+  font-family: 'Georgia', serif;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  overflow: hidden;
+  color: white;
 }
 
-/* MENSAJE PRINCIPAL */
+/* MENSAJE */
 .mensaje {
-  position: relative;
-  font-size: 4em;
-  color: white;
+  position: absolute;
   text-align: center;
-  font-weight: bold;
-  text-shadow:
-    0 0 10px #fff,
-    0 0 20px #ff4fa3,
-    0 0 30px #ff4fa3;
-  margin-bottom: 60px;
+  font-size: 3.5em;
   z-index: 10;
-  animation: aparecer 2s ease-in-out forwards;
+  text-shadow: 0 0 20px #ffb6c1;
+  animation: aparecer 3s ease-in-out forwards;
   opacity: 0;
 }
 
@@ -38,89 +32,118 @@ body {
   to { opacity: 1; }
 }
 
-/* CONTENEDOR FLORES */
-.jardin {
-  display: grid;
-  grid-template-columns: repeat(5, 120px);
+/* CONTENEDOR */
+.rosas {
+  position: absolute;
+  bottom: 0;
+  display: flex;
   gap: 40px;
-  justify-content: center;
-  align-items: center;
+}
+
+/* TALLO */
+.tallo {
+  width: 6px;
+  height: 200px;
+  background: green;
+  position: relative;
+  animation: crecer 3s ease-out forwards;
+  transform-origin: bottom;
+  transform: scaleY(0);
+}
+
+@keyframes crecer {
+  to { transform: scaleY(1); }
 }
 
 /* FLOR */
-.flor {
-  position: relative;
-  width: 120px;
-  height: 120px;
-  animation: flotar 4s ease-in-out infinite;
+.rosa {
+  width: 80px;
+  height: 80px;
+  background: radial-gradient(circle, #ff1a4d, #b3002d);
+  border-radius: 50%;
+  position: absolute;
+  top: -60px;
+  left: -37px;
+  box-shadow: 0 0 20px rgba(255,0,80,0.7);
 }
 
-.petalo {
+/* HOJAS */
+.hoja {
+  width: 40px;
+  height: 20px;
+  background: green;
   position: absolute;
-  width: 60px;
-  height: 90px;
-  background: radial-gradient(circle at 30% 30%, #ff9ecb, #ff4fa3);
   border-radius: 50%;
-  transform-origin: bottom center;
 }
 
-.petalo:nth-child(1) { transform: rotate(0deg) translateY(-40px); }
-.petalo:nth-child(2) { transform: rotate(45deg) translateY(-40px); }
-.petalo:nth-child(3) { transform: rotate(90deg) translateY(-40px); }
-.petalo:nth-child(4) { transform: rotate(135deg) translateY(-40px); }
-.petalo:nth-child(5) { transform: rotate(180deg) translateY(-40px); }
-.petalo:nth-child(6) { transform: rotate(225deg) translateY(-40px); }
-.petalo:nth-child(7) { transform: rotate(270deg) translateY(-40px); }
-.petalo:nth-child(8) { transform: rotate(315deg) translateY(-40px); }
+.hoja.izq {
+  left: -40px;
+  top: 100px;
+  transform: rotate(-30deg);
+}
 
-.centro {
+.hoja.der {
+  right: -40px;
+  top: 130px;
+  transform: rotate(30deg);
+}
+
+/* CORAZONES */
+.corazon {
   position: absolute;
-  width: 50px;
-  height: 50px;
-  background: radial-gradient(circle, #ffe066, #ffcc00);
-  border-radius: 50%;
-  top: 35px;
-  left: 35px;
+  bottom: -50px;
+  font-size: 24px;
+  animation: flotar 6s linear infinite;
+  opacity: 0.7;
 }
 
 @keyframes flotar {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-10px); }
-  100% { transform: translateY(0px); }
+  0% { transform: translateY(0); opacity: 0.7; }
+  100% { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="mensaje">Flores como nadie te las han dado, te quiero mucho 💖</div>
+<div class="mensaje">
+  ❤️ Feliz San Valentín ❤️<br>
+  Te quiero mucho 🌹
+</div>
 
-<div class="jardin">
+<div class="rosas">
+  <div class="tallo">
+    <div class="rosa"></div>
+    <div class="hoja izq"></div>
+    <div class="hoja der"></div>
+  </div>
+  <div class="tallo">
+    <div class="rosa"></div>
+    <div class="hoja izq"></div>
+    <div class="hoja der"></div>
+  </div>
+  <div class="tallo">
+    <div class="rosa"></div>
+    <div class="hoja izq"></div>
+    <div class="hoja der"></div>
+  </div>
 </div>
 
 <script>
-const jardin = document.querySelector(".jardin");
+function crearCorazon() {
+  const corazon = document.createElement("div");
+  corazon.className = "corazon";
+  corazon.innerHTML = "💖";
+  corazon.style.left = Math.random() * window.innerWidth + "px";
+  corazon.style.animationDuration = (4 + Math.random() * 3) + "s";
+  document.body.appendChild(corazon);
 
-function crearFlor() {
-  const flor = document.createElement("div");
-  flor.className = "flor";
-
-  for (let i = 0; i < 8; i++) {
-    const petalo = document.createElement("div");
-    petalo.className = "petalo";
-    flor.appendChild(petalo);
-  }
-
-  const centro = document.createElement("div");
-  centro.className = "centro";
-  flor.appendChild(centro);
-
-  return flor;
+  setTimeout(() => {
+    corazon.remove();
+  }, 6000);
 }
 
-for (let i = 0; i < 10; i++) {
-  jardin.appendChild(crearFlor());
-}
+setInterval(crearCorazon, 500);
 </script>
 
 </body>
