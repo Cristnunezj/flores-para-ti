@@ -1,150 +1,149 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>San Valentín ❤️</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flores amarillas 🌼</title>
 
-<style>
-body {
-  margin: 0;
-  overflow: hidden;
-  background: radial-gradient(circle at center, #ff4e8a, #8b0000);
-  font-family: 'Georgia', serif;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  color: white;
-}
+  <style>
+    * {
+      box-sizing: border-box;
+    }
 
-/* MENSAJE */
-.mensaje {
-  position: absolute;
-  text-align: center;
-  font-size: 3.5em;
-  z-index: 10;
-  text-shadow: 0 0 20px #ffb6c1;
-  animation: aparecer 3s ease-in-out forwards;
-  opacity: 0;
-}
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #fff8c5, #ffe082, #fff3b0);
+      font-family: "Segoe UI", sans-serif;
+      overflow: hidden;
+    }
 
-@keyframes aparecer {
-  to { opacity: 1; }
-}
+    .card {
+      text-align: center;
+      padding: 40px 25px;
+      max-width: 500px;
+      animation: aparecer 1.5s ease;
+    }
 
-/* CONTENEDOR */
-.rosas {
-  position: absolute;
-  bottom: 0;
-  display: flex;
-  gap: 40px;
-}
+    h1 {
+      color: #d89b00;
+      font-size: 2.5rem;
+      margin-bottom: 10px;
+    }
 
-/* TALLO */
-.tallo {
-  width: 6px;
-  height: 200px;
-  background: green;
-  position: relative;
-  animation: crecer 3s ease-out forwards;
-  transform-origin: bottom;
-  transform: scaleY(0);
-}
+    p {
+      color: #6d5200;
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
 
-@keyframes crecer {
-  to { transform: scaleY(1); }
-}
+    .flowers {
+      font-size: 4rem;
+      margin: 20px 0;
+      animation: flotar 3s ease-in-out infinite;
+    }
 
-/* FLOR */
-.rosa {
-  width: 80px;
-  height: 80px;
-  background: radial-gradient(circle, #ff1a4d, #b3002d);
-  border-radius: 50%;
-  position: absolute;
-  top: -60px;
-  left: -37px;
-  box-shadow: 0 0 20px rgba(255,0,80,0.7);
-}
+    button {
+      border: none;
+      padding: 14px 25px;
+      border-radius: 30px;
+      background: #f7c600;
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px #d6a90066;
+      transition: .3s;
+    }
 
-/* HOJAS */
-.hoja {
-  width: 40px;
-  height: 20px;
-  background: green;
-  position: absolute;
-  border-radius: 50%;
-}
+    button:hover {
+      transform: scale(1.08);
+      background: #e5ae00;
+    }
 
-.hoja.izq {
-  left: -40px;
-  top: 100px;
-  transform: rotate(-30deg);
-}
+    #mensaje {
+      display: none;
+      margin-top: 20px;
+      color: #8a6200;
+      font-weight: bold;
+    }
 
-.hoja.der {
-  right: -40px;
-  top: 130px;
-  transform: rotate(30deg);
-}
+    .petalo {
+      position: absolute;
+      top: -50px;
+      font-size: 25px;
+      animation: caer linear infinite;
+      opacity: .8;
+    }
 
-/* CORAZONES */
-.corazon {
-  position: absolute;
-  bottom: -50px;
-  font-size: 24px;
-  animation: flotar 6s linear infinite;
-  opacity: 0.7;
-}
+    @keyframes caer {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
 
-@keyframes flotar {
-  0% { transform: translateY(0); opacity: 0.7; }
-  100% { transform: translateY(-110vh); opacity: 0; }
-}
-</style>
+    @keyframes flotar {
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @keyframes aparecer {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="mensaje">
-  ❤️ Feliz San Valentín ❤️<br>
-  Te quiero mucho 🌹
-</div>
+  <div class="card">
+    <div class="flowers">🌻🌼🌻</div>
 
-<div class="rosas">
-  <div class="tallo">
-    <div class="rosa"></div>
-    <div class="hoja izq"></div>
-    <div class="hoja der"></div>
+    <h1>Flores amarillas para ti 💛</h1>
+
+    <p>
+      Que hoy florezca todo lo bonito en tu vida,
+      así como estas flores florecen para recordarte
+      lo especial que eres. 🌼✨
+    </p>
+
+    <button onclick="mostrarMensaje()">
+      Toca aquí 🌻
+    </button>
+
+    <div id="mensaje">
+      💛 Que nunca te falten motivos para sonreír.
+    </div>
   </div>
-  <div class="tallo">
-    <div class="rosa"></div>
-    <div class="hoja izq"></div>
-    <div class="hoja der"></div>
-  </div>
-  <div class="tallo">
-    <div class="rosa"></div>
-    <div class="hoja izq"></div>
-    <div class="hoja der"></div>
-  </div>
-</div>
 
-<script>
-function crearCorazon() {
-  const corazon = document.createElement("div");
-  corazon.className = "corazon";
-  corazon.innerHTML = "💖";
-  corazon.style.left = Math.random() * window.innerWidth + "px";
-  corazon.style.animationDuration = (4 + Math.random() * 3) + "s";
-  document.body.appendChild(corazon);
+  <script>
+    function mostrarMensaje() {
+      document.getElementById("mensaje").style.display = "block";
+    }
 
-  setTimeout(() => {
-    corazon.remove();
-  }, 6000);
-}
+    // Flores cayendo
+    for (let i = 0; i < 20; i++) {
+      const flor = document.createElement("div");
 
-setInterval(crearCorazon, 500);
-</script>
+      flor.className = "petalo";
+      flor.textContent = Math.random() > 0.5 ? "🌼" : "💛";
+
+      flor.style.left = Math.random() * 100 + "vw";
+      flor.style.animationDuration = (4 + Math.random() * 5) + "s";
+      flor.style.animationDelay = Math.random() * 5 + "s";
+
+      document.body.appendChild(flor);
+    }
+  </script>
 
 </body>
 </html>
